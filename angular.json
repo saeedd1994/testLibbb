@@ -3,5 +3,39 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "testUi": {
+      "projectType": "library",
+      "root": "projects/test-ui",
+      "sourceRoot": "projects/test-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/test-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/test-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/test-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/test-ui/src/test.ts",
+            "tsConfig": "projects/test-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/test-ui/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "d2970ac3-6e59-4257-b6f8-9b6050e9e72c"
   }
 }
